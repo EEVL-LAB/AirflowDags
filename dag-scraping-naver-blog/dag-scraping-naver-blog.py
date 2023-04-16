@@ -4,6 +4,7 @@ from airflow.models import DAG
 
 from airflow.operators.python import PythonOperator
 
+from airflow.providers.http.sensors.http import HttpSensor
 from airflow.providers.http.operators.http import SimpleHttpOperator
 
 
@@ -14,10 +15,17 @@ with DAG(
     catchup=False
 ) as dag:
     
+    is_scraping_naver_blog_api_available = HttpSensor(
+        task_id='is-scraping-naver-blog-api-available',
+        http_conn_id='scraping-into-kafka-provider',
+        endpoint='scraping_naver_blog/'
+    )
+    
     scraping_naver_blog_into_kafka_provider = SimpleHttpOperator(
         task_id='scraping-naver-blog-into-kafka-provider',
         http_conn_id='scraping-into-kafka-provider',
-        endpoint='scraping_naver_blog',
+        endpoint='scraping_naver_blog/',
+        method='POST',
         data={
             'target_keyword': '윤석열',
             'start_date': '2022-04-14',
@@ -26,4 +34,4 @@ with DAG(
         log_response=True
     )
     
-    scraping_naver_blog_into_kafka_provider
+    is_scraping_naver_blog_api_available >> scraping_naver_blog_into_kafka_provider
