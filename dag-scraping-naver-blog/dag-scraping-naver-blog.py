@@ -15,7 +15,7 @@ with DAG(
         task_id='scraping-naver-blog-into-kafka-provider',
         http_conn_id='scraping-into-kafka-provider',
         endpoint='scraping_naver_blog',
-        request_params={
+        data={
             'target_keyword': '윤석열',
             'start_date': '2022-04-14',
             'end_date': '2022-06-14'
