@@ -34,4 +34,5 @@ with DAG(
         log_response=True
     )
     
-    is_scraping_naver_blog_api_available >> scraping_naver_blog_into_kafka_provider
+    # is_scraping_naver_blog_api_available >> scraping_naver_blog_into_kafka_provider
+    scraping_naver_blog_into_kafka_provider
