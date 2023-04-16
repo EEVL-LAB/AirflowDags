@@ -25,7 +25,7 @@ def request_naver_blog_into_kafka_provider(
 with DAG(
     dag_id='dag-scraping-naver-blog',
     schedule_interval='@daily',
-    start_date=datetime(2023, 4, 1),
+    start_date=datetime.datetime(2023, 4, 1),
     catchup=False
 ) as dag:
     
