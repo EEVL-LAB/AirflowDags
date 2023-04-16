@@ -1,3 +1,5 @@
+import json
+
 from datetime import datetime
 
 from airflow.models import DAG
@@ -31,6 +33,7 @@ with DAG(
             'start_date': '2022-04-14',
             'end_date': '2022-06-14'
         },
+        response_filter=lambda res: json.loads(res.text),
         log_response=True
     )
     
