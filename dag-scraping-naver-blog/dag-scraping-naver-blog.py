@@ -18,7 +18,7 @@ def request_naver_blog_into_kafka_provider(
 ):
     requests.post(
         url='http://scraping.eevl.studio:8080/scraping_naver_blog',
-        data={
+        json={
             'target_keyword': target_keyword,
             'start_date': start_date,
             'end_date': end_date
@@ -60,7 +60,7 @@ with DAG(
         task_id='scraping_naver_blog_into_kafka_provider',
         python_callable=request_naver_blog_into_kafka_provider,
         op_kwargs={
-            "target_keyword": "오늘수거",
+            "target_keyword": "윤석열",
             "start_date": "2023-01-01",
             "end_date": "2023-04-15"
         }
