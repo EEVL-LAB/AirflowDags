@@ -34,7 +34,7 @@ with DAG(
         task_id='scraping_naver_blog_into_kafka_provider',
         python_callable=request_naver_blog_into_kafka_provider,
         op_kwargs={
-            "target_keyword": [
+            "target_keywords": [
                 '윤석열',
                 '오늘수거'
             ]
