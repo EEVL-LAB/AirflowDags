@@ -58,7 +58,12 @@ with DAG(
     
     scraping_naver_blog_into_kafka_provider = PythonOperator(
         task_id='scraping_naver_blog_into_kafka_provider',
-        python_callable=request_naver_blog_into_kafka_provider
+        python_callable=request_naver_blog_into_kafka_provider,
+        op_kwargs={
+            "target_keyword": "오늘수거",
+            "start_date": "2023-01-01",
+            "end_date": "2023-04-15"
+        }
     )
     
     scraping_naver_blog_into_kafka_provider
