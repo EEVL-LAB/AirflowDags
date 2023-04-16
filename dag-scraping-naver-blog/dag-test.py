@@ -14,7 +14,8 @@ with DAG(
     
     is_available = HttpSensor(
         task_id='is-scraping-naver-blog-api-available',
-        http_conn_id='test-connection'
+        http_conn_id='test-connection',
+        endpoint='/'
     )
     
     is_available
