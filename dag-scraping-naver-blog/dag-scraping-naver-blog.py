@@ -5,12 +5,6 @@ from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 
 
-target_keywords = [
-    "윤석열",
-    "오늘수거"
-]
-
-
 def request_naver_blog_into_kafka_provider(
     target_keywords: List[str]
 ):
@@ -39,7 +33,10 @@ with DAG(
         task_id='scraping_naver_blog_into_kafka_provider',
         python_callable=request_naver_blog_into_kafka_provider,
         op_kwargs={
-            "target_keyword": target_keywords
+            "target_keyword": [
+                '윤석열',
+                '오늘수거'
+            ]
         }
     )
     
