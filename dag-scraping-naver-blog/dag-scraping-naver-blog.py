@@ -12,7 +12,7 @@ def request_naver_blog_into_kafka_provider(
     delta = datetime.timedelta(days=1)
     date = str(today - delta)
     for target_keyword in target_keywords:
-        requests.post(
+        response = requests.post(
             url='http://scraping.eevl.studio:8080/scraping_naver_blog',
             json={
                 'target_keyword': target_keyword,
@@ -20,6 +20,7 @@ def request_naver_blog_into_kafka_provider(
                 'end_date': date
             }
         )
+        print(response)
 
 
 with DAG(
