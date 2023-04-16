@@ -18,13 +18,13 @@ with DAG(
     is_scraping_naver_blog_api_available = HttpSensor(
         task_id='is-scraping-naver-blog-api-available',
         http_conn_id='scraping-into-kafka-provider',
-        endpoint='scraping_naver_blog/'
+        endpoint='/scraping_naver_blog'
     )
     
     scraping_naver_blog_into_kafka_provider = SimpleHttpOperator(
         task_id='scraping-naver-blog-into-kafka-provider',
         http_conn_id='scraping-into-kafka-provider',
-        endpoint='scraping_naver_blog/',
+        endpoint='/scraping_naver_blog',
         method='POST',
         data={
             'target_keyword': '윤석열',
@@ -34,5 +34,4 @@ with DAG(
         log_response=True
     )
     
-    # is_scraping_naver_blog_api_available >> scraping_naver_blog_into_kafka_provider
-    scraping_naver_blog_into_kafka_provider
+    is_scraping_naver_blog_api_available >> scraping_naver_blog_into_kafka_provider
