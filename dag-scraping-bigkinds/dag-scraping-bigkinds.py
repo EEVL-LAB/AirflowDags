@@ -29,11 +29,12 @@ with DAG(
     schedule_interval='@daily',
     start_date=datetime.datetime(2023, 4, 1),
     catchup=False,
-    dagrun_timeout=datetime.timedelta(days=1)
+    # dagrun_timeout=datetime.timedelta(days=1)
 ) as dag:
     
     scraping_bigkinds_into_kafka_provider = PythonOperator(
         task_id='scraping_bigkinds_into_kafka_provider',
+        execution_timeout=datetime.timedelta(days=1),
         python_callable=request_bigkinds_into_kafka_provider,
         op_kwargs={
             "target_keywords": [
