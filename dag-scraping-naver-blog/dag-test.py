@@ -15,7 +15,7 @@ def request_naver_blog_into_kafka_provider(
 
 
 with DAG(
-    dag_id='dag-scraping-naver-blog',
+    dag_id='dag-scraping-naver-blog-test',
     schedule_interval='@daily',
     start_date=datetime.datetime(2023, 4, 1),
     catchup=False,
@@ -23,7 +23,7 @@ with DAG(
 ) as dag:
     
     scraping_naver_blog_into_kafka_provider = PythonOperator(
-        task_id='scraping_naver_blog_into_kafka_provider',
+        task_id='scraping_naver_blog_into_kafka_provider-test',
         execution_timeout=datetime.timedelta(days=1),
         sla=datetime.timedelta(days=1),
         python_callable=request_naver_blog_into_kafka_provider,
