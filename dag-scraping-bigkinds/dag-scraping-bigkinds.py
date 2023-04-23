@@ -34,7 +34,7 @@ with DAG(
     
     scraping_bigkinds_into_kafka_provider = PythonOperator(
         task_id='scraping_bigkinds_into_kafka_provider',
-        # execution_timeout=datetime.timedelta(days=1),
+        execution_timeout=datetime.timedelta(days=1),
         sla=datetime.timedelta(days=1),
         python_callable=request_bigkinds_into_kafka_provider,
         op_kwargs={

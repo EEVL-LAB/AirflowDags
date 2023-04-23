@@ -29,7 +29,7 @@ with DAG(
     schedule_interval='@daily',
     start_date=datetime.datetime(2023, 4, 1),
     catchup=False,
-    # dagrun_timeout=datetime.timedelta(days=1)
+    dagrun_timeout=datetime.timedelta(days=1)
 ) as dag:
     
     scraping_naver_blog_into_kafka_provider = PythonOperator(
