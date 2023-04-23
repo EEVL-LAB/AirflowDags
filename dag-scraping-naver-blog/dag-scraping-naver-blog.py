@@ -17,7 +17,8 @@ def request_naver_blog_into_kafka_provider(
             json={
                 'target_keyword': target_keyword,
                 'start_date': date,
-                'end_date': date
+                'end_date': date,
+                "page_limit": 100
             }
         )
         print(response)
