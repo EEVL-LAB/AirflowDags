@@ -39,8 +39,8 @@ with DAG(
         python_callable=request_naver_blog_into_kafka_provider,
         op_kwargs={
             "target_keywords": [
-                '윤석열',
-                '오늘수거'
+                '예술작품',
+                '전시회'
             ]
         }
     )
