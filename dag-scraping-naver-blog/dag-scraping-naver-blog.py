@@ -13,7 +13,7 @@ def request_naver_blog_into_kafka_provider(
     date = str(today - delta)
     for target_keyword in target_keywords:
         response = requests.post(
-            url='http://scraping.eevl.studio:8080/scraping_naver_blog',
+            url='http://nodeport.eevl.studio:30085/scraping_naver_blog',
             json={
                 'target_keyword': target_keyword,
                 'start_date': date,
